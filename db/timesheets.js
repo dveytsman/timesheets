@@ -10,6 +10,12 @@ function getAllTimesheets(){
     return knex("timesheets").select("*");
 }
 
+knex.schema.createTable('users', function (table) {
+    table.increments();
+    table.string('name');
+    table.timestamps();
+  })
+
 module.exports = {
     createTimesheet,
     findTimesheets,

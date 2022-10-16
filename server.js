@@ -2,6 +2,10 @@ const express = require('express');
 const importedfunction = require("./testexport");
 const app = express();
 const db = require("./db/timesheets");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.post("/timesheets", async (req, res) => {
     const result = await db.createTimesheet(req.body);
