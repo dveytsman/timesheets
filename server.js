@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-
+//TODO req.body.date works for the app, req.query.date works for the postman app
+// need to resolve discrepancy
 app.post("/timesheets", async (req, res) => {
   db.run(
     `INSERT INTO timesheetEntries(
@@ -38,30 +39,31 @@ app.post("/timesheets", async (req, res) => {
       costAmount,
       currency,
       referenceURL) VALUES(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?, ?)`, 
-    [req.query.date,
-    req.query.client,
-    req.query.project,
-    req.query.projectCode,
-    req.query.task,
-    req.query.hours,
-    req.query.hoursRounded,
-    req.query.billable,
-    req.query.invoiced,
-    req.query.approved,
-    req.query.firstName,
-    req.query.lastName,
-    req.query.department,
-    req.query.employee,
-    req.query.billableRate,
-    req.query.costRate,
-    req.query.costAmount,
-    req.query.currency,
-    req.query.referenceUR],
+    [req.body.date,
+    req.body.client,
+    req.body.project,
+    req.body.projectCode,
+    req.body.task,
+    req.body.hours,
+    req.body.hoursRounded,
+    req.body.billable,
+    req.body.invoiced,
+    req.body.approved,
+    req.body.firstName,
+    req.body.lastName,
+    req.body.department,
+    req.body.employee,
+    req.body.billableRate,
+    req.body.costRate,
+    req.body.costAmount,
+    req.body.currency,
+    req.body.referenceUR],
     function(err) {
     if (err) {
       return console.log(err.message);
     }
     // get the last insert id
+    console.log(req);
     return console.log(`A row has been inserted with rowid ${this.lastID}`);
   });
     // const result = await db.createTimesheet(req.body);
@@ -92,7 +94,7 @@ app.get("/timesheets", (req, res, next) => {
 })
 
 app.get("/timesheets/:id", (req, res, next) => {
-  
+
     db.all("SELECT * FROM timesheetEntries where client = ?", [req.params.id], (err, rows) => {
         if (err) {
           res.status(400).json({"error":err.message});

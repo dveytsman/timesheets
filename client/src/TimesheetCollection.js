@@ -1,6 +1,8 @@
 import Timesheet from "./Timesheet";
 import React, { Component } from "react";
+import { Button, Table } from "react-bootstrap";
 import axios from "axios";
+import CreateTimesheet from "./CreateTimesheet";
 
 export default class TimesheetCollection extends Component {
     constructor(){
@@ -52,11 +54,39 @@ export default class TimesheetCollection extends Component {
         return(
             <div>
                 <input value={this.state.clientSearch} onChange={this.handleChange} type="text" id="searchInput"></input>
-                <button onClick={this.handleSubmit}>find client timesheets</button>
-                <button onClick={this.handleClear}>clear search</button>
-                {this.state.data.map((row, i) => {
+                <Button onClick={this.handleSubmit}>find client timesheets</Button>
+                <Button onClick={this.handleClear}>clear search</Button>
+                <CreateTimesheet />
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Project</th>
+                            <th>Project Code</th>
+                            <th>Task</th>
+                            <th>Hours</th>
+                            <th>Hours Rounded</th>
+                            <th>Is Billable?</th>
+                            <th>Is Invoiced?</th>
+                            <th>Is Approved?</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Department</th>
+                            <th>Is Employee?</th>
+                            <th>Billable Rate</th>
+                            <th>Cost Rate</th>
+                            <th>Cost Amount</th>
+                            <th>Currency</th>
+                            <th>External Reference URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.data.map((row, i) => {
                 return <Timesheet row={row} key={i + Math.random()} />;
                 })}
+                    </tbody>
+                </Table>
             </div>
         )
     }
