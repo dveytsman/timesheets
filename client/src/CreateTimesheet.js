@@ -38,9 +38,10 @@ function CreateTimesheet(){
         });
     };
 
-    useEffect(() => {
-        console.log(timesheet);
-    }, [timesheet]);
+    //function to check state changes of the form. visible on browser console
+    // useEffect(() => {
+    //     console.log(timesheet);
+    // }, [timesheet]);
 
     const handleClick = (event) => {
         event.preventDefault();
