@@ -60,25 +60,25 @@ export default class TimesheetCollection extends Component {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>Date</th>
+                            {/* <th>Date</th> */}
                             <th>Client</th>
-                            <th>Project</th>
-                            <th>Project Code</th>
-                            <th>Task</th>
+                            {/* <th>Project</th> */}
+                            {/* <th>Project Code</th> */}
+                            {/* <th>Task</th> */}
                             <th>Hours</th>
-                            <th>Hours Rounded</th>
-                            <th>Is Billable?</th>
-                            <th>Is Invoiced?</th>
-                            <th>Is Approved?</th>
+                            {/* <th>Hours Rounded</th> */}
+                            {/* <th>Is Billable?</th> */}
+                            {/* <th>Is Invoiced?</th> */}
+                            {/* <th>Is Approved?</th> */}
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Department</th>
-                            <th>Is Employee?</th>
+                            {/* <th>Department</th> */}
+                            {/* <th>Is Employee?</th> */}
                             <th>Billable Rate</th>
-                            <th>Cost Rate</th>
+                            {/* <th>Cost Rate</th> */}
                             <th>Cost Amount</th>
-                            <th>Currency</th>
-                            <th>External Reference URL</th>
+                            {/* <th>Currency</th> */}
+                            {/* <th>External Reference URL</th> */}
                         </tr>
                     </thead>
                     <tbody>
