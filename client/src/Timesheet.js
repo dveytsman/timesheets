@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+import Table from 'react-bootstrap/Table';
 
 export default class Timesheet extends Component {
     constructor({row}){
